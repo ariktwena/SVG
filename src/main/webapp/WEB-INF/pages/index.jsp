@@ -31,6 +31,7 @@
                 <option value="660">660</option>
                 <option value="690">690</option>
                 <option value="720">720</option>
+                <option value="730">730</option>
                 <option value="750">750</option>
                 <option value="780">780</option>
             </select>
@@ -84,10 +85,10 @@
 
 <div>
     <div>
-        ${requestScope.svgTop}
+        ${requestScope.svgSide}
     </div>
     <div>
-        ${requestScope.svgSide}
+        ${requestScope.svgTop}
     </div>
 </div>
 

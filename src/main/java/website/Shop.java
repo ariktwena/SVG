@@ -2,6 +2,7 @@ package website;
 
 import core.Carport;
 import svg.SVGSide;
+import svg.SVGTop;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,8 +38,10 @@ public class Shop extends BaseServlet {
         Carport carport = new Carport(length, width, roof, withShed, shedSize);
 
         SVGSide svgSide = new SVGSide(carport);
+        SVGTop svgTop = new SVGTop(carport);
 
         request.setAttribute("svgSide", svgSide.getSvgSide());
+        request.setAttribute("svgTop", svgTop.getSvgTop());
 
         render("Index", "/WEB-INF/pages/index.jsp", request, response);
     }
