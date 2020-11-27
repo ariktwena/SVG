@@ -12,8 +12,9 @@ public class SVGTop {
     private double shedWidth;
     private StringBuilder sb;
     private String SVGside;
+    private String kunde;
 
-    public SVGTop(Carport carport) {
+    public SVGTop(Carport carport, String kunde) {
         this.length = carport.getCarport_length();
         this.width = carport.getCarport_width();
         this.withShed = carport.isWithShed();
@@ -22,6 +23,7 @@ public class SVGTop {
         this.shedSize = carport.getShedSize();
         this.sb = new StringBuilder();
         this.SVGside = null;
+        this.kunde = kunde;
     }
 
 
@@ -40,11 +42,18 @@ public class SVGTop {
 
     public String getSvgTop() {
         sb.append(createHeader());
-        sb = sb.append(lodretMal());
-        sb = sb.append(vandretMal());
+        if(kunde.equals("nej")){
+            sb = sb.append(lodretMal());
+            sb = sb.append(vandretMal());
+        }
         sb = sb.append(carportHeader());
         sb = sb.append(carportRammeogSider());
-        sb = sb.append(carportSpaerMal());
+
+        sb = sb.append(carportSpaer());
+        if(kunde.equals("nej")){
+            sb = sb.append(carportSpaerMal());
+        }
+
         sb = sb.append(carportKryds());
         sb = sb.append(carportBagForkant());
         sb = sb.append(carportSpear());
@@ -258,7 +267,7 @@ public class SVGTop {
     }
 
 
-    private String carportSpaerMal() {
+    private String carportSpaer() {
         String svgText;
 
         if (roof.equals("skrot")) {
@@ -310,6 +319,20 @@ public class SVGTop {
 
 
             svgText = svgText + "";
+
+        } else {
+            svgText = "";
+        }
+
+        return svgText;
+    }
+
+    private String carportSpaerMal() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+
+            svgText = "";
 
         } else {
             svgText = "";
@@ -466,6 +489,7 @@ public class SVGTop {
                     "        <rect x=\"" + (length - 30) + "\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>";
 
+
         } else {
             svgText = "<rect x=\"" + (112) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>\n" +
@@ -484,6 +508,7 @@ public class SVGTop {
                     "\n" +
                     "        <rect x=\"" + (length - 36) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>";
+
         }
 
         return svgText;

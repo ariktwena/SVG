@@ -76,6 +76,13 @@
                 <option value="halv">Halv</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect7">Kunde?</label>
+            <select class="form-control" id="exampleFormControlSelect7" name="kunde">
+                <option value="ja">Ja</option>
+                <option value="nej">Nej</option>
+            </select>
+        </div>
 
         <input type="submit" value="Send">
 

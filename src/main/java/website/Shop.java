@@ -28,6 +28,7 @@ public class Shop extends BaseServlet {
         String roof = request.getParameter("roof");
         String shedOption = request.getParameter("shedOption");
         String shedSize = request.getParameter("shedSize");
+        String kunde = request.getParameter("kunde");
 
         if(shedOption.equals("ja")){
             withShed = true;
@@ -37,8 +38,8 @@ public class Shop extends BaseServlet {
 
         Carport carport = new Carport(length, width, roof, withShed, shedSize);
 
-        SVGSide svgSide = new SVGSide(carport);
-        SVGTop svgTop = new SVGTop(carport);
+        SVGSide svgSide = new SVGSide(carport, kunde);
+        SVGTop svgTop = new SVGTop(carport, kunde);
 
         request.setAttribute("svgSide", svgSide.getSvgSide());
         request.setAttribute("svgTop", svgTop.getSvgTop());
