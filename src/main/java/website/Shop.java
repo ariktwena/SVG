@@ -1,6 +1,7 @@
 package website;
 
 import core.Carport;
+import core.Shed;
 import svg.SVGSide;
 import svg.SVGTop;
 
@@ -22,6 +23,7 @@ public class Shop extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean withShed;
+        double shedLenght, shedWidth;
 
         double length = Double.parseDouble(request.getParameter("length"));
         double width = Double.parseDouble(request.getParameter("width"));
@@ -36,7 +38,25 @@ public class Shop extends BaseServlet {
             withShed = false;
         }
 
-        Carport carport = new Carport(length, width, roof, withShed, shedSize);
+        if(roof.equals("skrot")){
+            shedLenght = 225;
+            if(shedSize.equals("hel")){
+                shedWidth = width - 40;
+            } else {
+                shedWidth = (width / 2) - 40;
+            }
+        } else {
+            shedLenght = 210;
+            if(shedSize.equals("hel")){
+                shedWidth = width - 75;
+            } else {
+                shedWidth = (width / 2) - 75;
+            }
+        }
+
+        Shed shed = new Shed(shedLenght, shedWidth);
+
+        Carport carport = new Carport(length, width, roof, withShed, shed);
 
         SVGSide svgSide = new SVGSide(carport, kunde);
         SVGTop svgTop = new SVGTop(carport, kunde);

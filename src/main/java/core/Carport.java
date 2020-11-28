@@ -6,15 +6,15 @@ public class Carport {
     private final double carport_width;
     private final String roof;
     private final boolean withShed;
-    private final String shedSize;
+    private final Shed shed;
 
 
-    public Carport(double carport_length, double carport_width, String roof, boolean withShed, String shedSize) {
+    public Carport(double carport_length, double carport_width, String roof, boolean withShed, Shed shed) {
         this.carport_length = carport_length;
         this.carport_width = carport_width;
         this.roof = roof;
         this.withShed = withShed;
-        this.shedSize = shedSize;
+        this.shed = shed;
     }
 
     public double getCarport_length() {
@@ -33,7 +33,7 @@ public class Carport {
         return withShed;
     }
 
-    public String getShedSize() {
-        return shedSize;
+    public Shed getShed() {
+        return shed;
     }
 }

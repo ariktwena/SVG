@@ -7,8 +7,8 @@ public class SVGTop {
     private double length;
     private double width;
     private String roof;
-    private String shedSize;
     private boolean withShed;
+    private double shedLength;
     private double shedWidth;
     private StringBuilder sb;
     private String SVGside;
@@ -18,26 +18,12 @@ public class SVGTop {
         this.length = carport.getCarport_length();
         this.width = carport.getCarport_width();
         this.withShed = carport.isWithShed();
-        this.shedWidth = shedWidth(carport.getShedSize(), carport.getCarport_length());
+        this.shedLength = carport.getShed().getShed_length();
+        this.shedWidth = carport.getShed().getShed_width();
         this.roof = carport.getRoof();
-        this.shedSize = carport.getShedSize();
         this.sb = new StringBuilder();
         this.SVGside = null;
         this.kunde = kunde;
-    }
-
-
-    private double shedWidth(String shedWitdh, double carportLength){
-        double shedWidth;
-
-        if(shedWitdh.equals("hal")){
-            shedWidth = carportLength/2;
-            return shedWidth;
-
-        } else {
-            shedWidth = carportLength;
-            return shedWidth;
-        }
     }
 
     public String getSvgTop() {
@@ -539,26 +525,26 @@ public class SVGTop {
                     "         preserveAspectRatio=\"xMinYMin\">";
 
             //Stolper
-            svgText = svgText + "<rect x=\"" + (length - 250) + "\" y=\"14\" height=\"9.7\" width=\"9.7\"\n" +
+            svgText = svgText + "<rect x=\"" + (length - shedLength - 25) + "\" y=\"14\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>\n" +
                     "        \n" +
-                    "        <rect x=\"" + (length - 250) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "        <rect x=\"" + (length - shedLength - 25) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>\n" +
                     "\n" +
                     "        <rect x=\"" + (length - 30) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>";
 
-            if(shedSize.equals("hel")){
-                svgText = svgText + "<rect x=\"" + (length - 250) + "\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
+            if(width == shedWidth + 40){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 25) + "\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
                         "              style=\"stroke:#000000; fill: #fff\"/>";
             }
 
             //Ramme om skur
-            if(shedSize.equals("hel")){
-                svgText = svgText + "<rect x=\"" + (length - 248) + "\" y=\"14\" height=\"" + (width - 28) + "\" width=\"225\"\n" +
+            if(width == shedWidth + 40){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 23) + "\" y=\"14\" height=\"" + (width - 28) + "\" width=\"" + (shedLength) + "\"\n" +
                         "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
             } else {
-                svgText = svgText + "<rect x=\"" + (length - 248) + "\" y=\"14\" height=\"" + (width/2 - 10) + "\" width=\"225\"\n" +
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 23) + "\" y=\"14\" height=\"" + (width/2 - 10) + "\" width=\"" + (shedLength) + "\"\n" +
                         "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
             }
 
@@ -578,26 +564,26 @@ public class SVGTop {
 
 
             //Stolper
-            svgText = svgText + "<rect x=\"" + (length - 228) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
+            svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>\n" +
                     "        \n" +
                     "        <rect x=\"" + (length - 35) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>\n" +
                     "\n" +
-                    "        <rect x=\"" + (length - 228) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "        <rect x=\"" + (length - shedLength - 18) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
                     "              style=\"stroke:#000000; fill: #fff\"/>";
 
-            if(shedSize.equals("hel")){
-                svgText = svgText + "<rect x=\"" + (length - 228) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+            if(width == shedWidth +  75){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
                         "              style=\"stroke:#000000; fill: #fff\"/>";
             }
 
             //Ramme om skur
-            if(shedSize.equals("hel")){
-                svgText = svgText + "<rect x=\"" + (length - 228) + "\" y=\"32.5\" height=\"" + (width - 60) + "\" width=\"203\"\n" +
+            if(width == shedWidth + 75){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"32.5\" height=\"" + (width - 60) + "\" width=\"" + (shedLength - 7) + "\"\n" +
                         "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
             } else {
-                svgText = svgText + "<rect x=\"" + (length - 228) + "\" y=\"32.5\" height=\"" + (width/2 - 25) + "\" width=\"203\"\n" +
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"32.5\" height=\"" + (width/2 - 25) + "\" width=\"" + (shedLength - 7) + "\"\n" +
                         "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
             }
 

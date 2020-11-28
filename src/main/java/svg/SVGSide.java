@@ -11,6 +11,7 @@ public class SVGSide {
     private StringBuilder sb;
     private String SVGside;
     private String kunde;
+    private double shedLength;
 
     public SVGSide(Carport carport, String kunde) {
         this.length = carport.getCarport_length();
@@ -20,6 +21,7 @@ public class SVGSide {
         this.sb = new StringBuilder();
         this.SVGside = null;
         this.kunde = kunde;
+        this.shedLength = carport.getShed().getShed_length();
     }
 
     private double getCarport_height(String roof){
@@ -250,7 +252,7 @@ public class SVGSide {
 
 
             for(double x = 0 ; x < 210 ; x = x + 10){
-                svgText = svgText + "<rect x=\"" + ((length - 245) + x) + "\" y=\"95\" height=\"210\" width=\"10\"\n" +
+                svgText = svgText + "<rect x=\"" + ((length - shedLength - 20) + x) + "\" y=\"95\" height=\"210\" width=\"10\"\n" +
                         "style=\"stroke:#000000; \" fill=\"none\"/>";
             }
 
@@ -269,7 +271,7 @@ public class SVGSide {
 
 
             for(double x = 0 ; x < 220 ; x = x + 10){
-                svgText = svgText + "<rect x=\"" + ((length - 240) + x) + "\" y=\"30\" height=\"200\" width=\"10\"\n" +
+                svgText = svgText + "<rect x=\"" + ((length - shedLength - 30) + x) + "\" y=\"30\" height=\"200\" width=\"10\"\n" +
                         "style=\"stroke:#000000; \" fill=\"none\"/>";
             }
 
