@@ -22,7 +22,7 @@ public class Shop extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean withShed;
+        boolean withShed, isCustomer;
         double shedLenght, shedWidth;
 
         double length = Double.parseDouble(request.getParameter("length"));
@@ -54,12 +54,18 @@ public class Shop extends BaseServlet {
             }
         }
 
+        if(kunde.equals("ja")){
+            isCustomer = true;
+        } else {
+            isCustomer = false;
+        }
+
         Shed shed = new Shed(shedLenght, shedWidth);
 
         Carport carport = new Carport(length, width, roof, withShed, shed);
 
-        SVGSide svgSide = new SVGSide(carport, kunde);
-        SVGTop svgTop = new SVGTop(carport, kunde);
+        SVGSide svgSide = new SVGSide(carport, isCustomer);
+        SVGTop svgTop = new SVGTop(carport, isCustomer);
 
         request.setAttribute("svgSide", svgSide.getSvgSide());
         request.setAttribute("svgTop", svgTop.getSvgTop());

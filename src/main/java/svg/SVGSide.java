@@ -10,18 +10,18 @@ public class SVGSide {
     private boolean withShed;
     private StringBuilder sb;
     private String SVGside;
-    private String kunde;
     private double shedLength;
+    private boolean isCustomer;
 
-    public SVGSide(Carport carport, String kunde) {
+    public SVGSide(Carport carport, boolean isCustomer) {
         this.length = carport.getCarport_length();
         this.height = getCarport_height(carport.getRoof());
         this.withShed = carport.isWithShed();
         this.roof = carport.getRoof();
         this.sb = new StringBuilder();
         this.SVGside = null;
-        this.kunde = kunde;
         this.shedLength = carport.getShed().getShed_length();
+        this.isCustomer = isCustomer;
     }
 
     private double getCarport_height(String roof){
@@ -34,7 +34,7 @@ public class SVGSide {
 
     public String getSvgSide() {
         sb.append(createHeader());
-        if(kunde.equals("nej")){
+        if(!isCustomer){
             sb = sb.append(lodretMal());
             sb = sb.append(vandretMal());
         }

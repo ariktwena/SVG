@@ -12,9 +12,9 @@ public class SVGTop {
     private double shedWidth;
     private StringBuilder sb;
     private String SVGside;
-    private String kunde;
+    private boolean isCustomer;
 
-    public SVGTop(Carport carport, String kunde) {
+    public SVGTop(Carport carport, boolean isCustomer) {
         this.length = carport.getCarport_length();
         this.width = carport.getCarport_width();
         this.withShed = carport.isWithShed();
@@ -23,12 +23,12 @@ public class SVGTop {
         this.roof = carport.getRoof();
         this.sb = new StringBuilder();
         this.SVGside = null;
-        this.kunde = kunde;
+        this.isCustomer = isCustomer;
     }
 
     public String getSvgTop() {
         sb.append(createHeader());
-        if(kunde.equals("nej")){
+        if(!isCustomer){
             sb = sb.append(lodretMal());
             sb = sb.append(vandretMal());
         }
@@ -36,7 +36,7 @@ public class SVGTop {
         sb = sb.append(carportRammeogSider());
 
         sb = sb.append(carportSpaer());
-        if(kunde.equals("nej")){
+        if(!isCustomer){
             sb = sb.append(carportSpaerMal());
         }
 
