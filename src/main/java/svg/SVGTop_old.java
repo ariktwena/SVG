@@ -1,272 +1,603 @@
 package svg;
 
 import core.Carport;
-import core.Shed;
-
-import static rules.Rules.*;
 
 public class SVGTop_old {
 
-    private String mySVG = null;
-    private StringBuilder sb = new StringBuilder();
-    double startPosXY = 30;
+    private double length;
+    private double width;
+    private String roof;
+    private boolean withShed;
+    private double shedLength;
+    private double shedWidth;
+    private StringBuilder sb;
+    private String SVGside;
+    private boolean isCustomer;
 
-//    double REM_WIDTH = 10;
-//    double BATTEN_WIDTH = 5;
-//    double POLES_WIDTH = 10;
-//    double POLES_HEIGHT = 10;
-//    double BATTENS_GAP_REM = 40;
-//    double SHED_PLANK_WIDTH = 15;
-//    double DOOR_WIDTH = 80;
+    public SVGTop_old(Carport carport, boolean isCustomer) {
+        this.length = carport.getCarport_length();
+        this.width = carport.getCarport_width();
+        this.withShed = carport.isWithShed();
+        this.shedLength = carport.getShed().getShed_length();
+        this.shedWidth = carport.getShed().getShed_width();
+        this.roof = carport.getRoof();
+        this.sb = new StringBuilder();
+        this.SVGside = null;
+        this.isCustomer = isCustomer;
+    }
 
-    public SVGTop_old(Carport carport, Shed shed) {
-        this.sb = sb.append("<SVG width=\"820\" height=\"820\">");
-        //ADD ALL METHODS FOR SVG DRAWING FROM TOP
-        double length = carport.getCarport_length();
-        double width = carport.getCarport_width();
-        double shedLength = shed.getShed_length();
-        double shedWidth = shed.getShed_width();
-        //Creates carport
-        sb.append(createRemme(length, width));
+    public String getSvgTop() {
+        sb.append(createHeader());
+        if(!isCustomer){
+            sb = sb.append(lodretMal());
+            sb = sb.append(vandretMal());
+        }
+        sb = sb.append(carportHeader());
+        sb = sb.append(carportRammeogSider());
 
-        //Creates shed
-        if(shedLength > 0) {
-            sb.append(createShed(length, width, shedLength, shedWidth));
+        sb = sb.append(carportSpaer());
+        if(!isCustomer){
+            sb = sb.append(carportSpaerMal());
         }
 
-        //For pointed roof
-        if(carport.getRoof().equals("PEAK")) {
-            sb.append(createLægterPointeRoof(length, width));
-            sb.append(createSupportingLægter(length, width));
+        sb = sb.append(carportKryds());
+        sb = sb.append(carportBagForkant());
+        sb = sb.append(carportSpear());
+        sb = sb.append(carportStolper());
+        sb = sb.append(carporFooter());
+        if(withShed){
+            sb = sb.append(skur());
+        }
+        sb = sb.append(footer());
+        SVGside = sb.toString();
+        return SVGside;
+    }
+
+    private String createHeader(){
+        // først " og så ).append().append("
+        // først " og så  + () + "
+        String svgText;
+        double headerWidth = width + 100;
+        double headerLengt = length + 100;
+
+        if(roof.equals("skrot")){
+            svgText = "<svg version=\"1.1\"\n" +
+                    "     xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                    "     xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n" +
+                    "     height=\"" + headerWidth + "\"  width=\"" + headerLengt + "\" viewBox=\"0 0 " + headerLengt + " " + headerWidth + "\"\n" +
+                    "     preserveAspectRatio=\"xMinYMin\">\n" +
+                    "\n" +
+                    "    <!--    Hvid ramme-->\n" +
+                    "    <rect x=\"0\" y=\"0\" height=\"" + headerWidth + "\" width=\"" + headerLengt + "\"\n" +
+                    "          style=\"stroke:#fff; fill: #fff\"/>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "    <defs>\n" +
+                    "        <marker\n" +
+                    "                id=\"beginArrow\"\n" +
+                    "                markerWidth=\"12\"\n" +
+                    "                markerHeight=\"12\"\n" +
+                    "                refX=\"0\"\n" +
+                    "                refY=\"6\"\n" +
+                    "                orient=\"auto\">\n" +
+                    "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
+                    "        </marker>\n" +
+                    "        <marker\n" +
+                    "                id=\"endArrow\"\n" +
+                    "                markerWidth=\"12\"\n" +
+                    "                markerHeight=\"12\"\n" +
+                    "                refX=\"12\"\n" +
+                    "                refY=\"6\"\n" +
+                    "                orient=\"auto\">\n" +
+                    "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
+                    "        </marker>\n" +
+                    "    </defs>";
+
         } else {
-            sb.append(createLægterFlatRoof(length, width));
+            svgText = "<svg version=\"1.1\"\n" +
+                    "     xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                    "     xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n" +
+                    "     height=\"" + headerWidth + "\"  width=\"" + headerLengt + "\" viewBox=\"0 0 " + headerLengt + " " + headerWidth + "\"\n" +
+                    "     preserveAspectRatio=\"xMinYMin\">\n" +
+                    "\n" +
+                    "    <!--    Hvid ramme-->\n" +
+                    "    <rect x=\"0\" y=\"0\" height=\"" + headerWidth + "\" width=\"" + headerLengt + "\"\n" +
+                    "          style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "    \n" +
+                    "    <defs>\n" +
+                    "        <marker\n" +
+                    "                id=\"beginArrow\"\n" +
+                    "                markerWidth=\"12\"\n" +
+                    "                markerHeight=\"12\"\n" +
+                    "                refX=\"0\"\n" +
+                    "                refY=\"6\"\n" +
+                    "                orient=\"auto\">\n" +
+                    "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
+                    "        </marker>\n" +
+                    "        <marker\n" +
+                    "                id=\"endArrow\"\n" +
+                    "                markerWidth=\"12\"\n" +
+                    "                markerHeight=\"12\"\n" +
+                    "                refX=\"12\"\n" +
+                    "                refY=\"6\"\n" +
+                    "                orient=\"auto\">\n" +
+                    "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
+                    "        </marker>\n" +
+                    "    </defs>";
         }
 
-        //Creates text and lines
-        sb.append(createLengthText(length, width));
-        sb.append(createWidthText(length, width));
-
-        sb.append("</SVG>");
-        this.mySVG = sb.toString();
-
+        return svgText;
     }
 
-    public String getMySVG() {
-        return mySVG;
-    }
+    private String lodretMal(){
+        String svgText;
+        double fixedWidth = width;
 
-    /*         Y
-               |
-               |
-         x - - - - -
-               |
-               |
-    */
+        if(roof.equals("skrot")){
+            svgText = "<line x1=\"20\"  y1=\"10\" x2=\"20\"   y2=\"" + (fixedWidth + 10) + "\"\n" +
+                    "          style=\"stroke: #000000;\n" +
+                    "\tmarker-start: url(#beginArrow);\n" +
+                    "\tmarker-end: url(#endArrow);\"/>\n" +
+                    "\n" +
+                    "    <text style=\"text-anchor: middle\" transform=\"translate(14," + (fixedWidth/2 + 5) + ") rotate(-90)\">" + (fixedWidth) + " cm</text>\n" +
+                    "\n" +
+                    "\n" +
+                    "    <line x1=\"45\"  y1=\"30\" x2=\"45\"   y2=\"" + (fixedWidth - 20) + "\"\n" +
+                    "          style=\"stroke: #000000;\n" +
+                    "\tmarker-start: url(#beginArrow);\n" +
+                    "\tmarker-end: url(#endArrow);\"/>\n" +
+                    "\n" +
+                    "    <text style=\"text-anchor: middle\" transform=\"translate(40," + (fixedWidth/2 + 5) + ") rotate(-90)\">" + (fixedWidth - 40) + " cm</text>\n" +
+                    "\n" +
+                    "\n" +
+                    "    <line x1=\"65\"  y1=\"" + (fixedWidth - 35) + "\" x2=\"65\"   y2=\"" + (fixedWidth + 10) + "\"\n" +
+                    "          style=\"stroke: #000000;\n" +
+                    "\tmarker-start: url(#beginArrow);\n" +
+                    "\tmarker-end: url(#endArrow);\"/>\n" +
+                    "\n" +
+                    "    <text style=\"text-anchor: middle\" transform=\"translate(70," + (fixedWidth - 60) + ") rotate(-90)\">0,45 cm</text>";
 
-    //Base model
-    private String createRemme(double length, double width) {
-        //Decides where the bottom REM goes on y axis.
-        double bottomRemY = width + (startPosXY - REM_WIDTH);
-        //Decides where both bottom and top side REM will be placed on the x axis.
-        double remXSides = startPosXY + REM_WIDTH;
-        //lengthOfRem decides the actual length of the REMME.
-        double lengthOfRem = length - (REM_WIDTH*2);
+        } else {
+            svgText = "<line x1=\"40\"  y1=\"10\" x2=\"40\"   y2=\"" + (fixedWidth + 10) + "\"\n" +
+                    "          style=\"stroke: #000000;\n" +
+                    "\tmarker-start: url(#beginArrow);\n" +
+                    "\tmarker-end: url(#endArrow);\"/>\n" +
+                    "\n" +
+                    "    <text style=\"text-anchor: middle\" transform=\"translate(30," + (fixedWidth/2) + ") rotate(-90)\">" + fixedWidth + " cm</text>";
 
-        //Side rem top.
-        sb.append("<rect x=\"").append(remXSides).append("\" y=\"").append(startPosXY).append("\" height=\"10\" width=\"").append(lengthOfRem).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        //Side rem bottom.
-        sb.append("<rect x=\"").append(remXSides).append("\" y=\"").append(bottomRemY).append("\" height=\"10\" width=\"").append(lengthOfRem).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        //Remme front og bag.
-        //x2 decides where the furthest back rem will be placed on the x axis.
-        double x2 = startPosXY + length - REM_WIDTH;
-
-        sb.append("<rect x=\"").append(startPosXY).append("\" y=\"").append(startPosXY).append("\" height=\"").append(width).append("\" width=\"").append(REM_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-        sb.append("<rect x=\"").append(x2).append("\" y=\"").append(startPosXY).append("\" height=\"").append(width).append("\" width=\"").append(REM_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        return sb.toString();
-    }
-
-    private String createLengthText(double length, double width) {
-        double lineY = width + startPosXY + 30;
-        double startLine = startPosXY - REM_WIDTH;
-        double lenghtOfLine = length + startPosXY;
-
-        sb.append("<line x1=\"").append(startLine).append("\" y1=\"").append(lineY).append("\" x2=\"").append(lenghtOfLine).append("\" y2=\"").append(lineY).append("\" style=\"stroke:rgb(255,0,0);stroke-width:2\" />");
-
-        //Minus 50 to get text centered, dividing with 2 will get the middle, but thats where the text will start
-        double textXPos = (lenghtOfLine / 2) - 50;
-        double textYPos = lineY + 20;
-
-        sb.append("<text x=\"").append(textXPos).append("\" y=\"").append(textYPos).append("\" fill=\"red\">L\u00e6ngde: ").append(width).append(" cm</text>");
-        return sb.toString();
-    }
-
-    private String createWidthText(double length, double width) {
-
-
-        double x1 = length + startPosXY + 30;
-        double y2 = width + startPosXY;
-
-        sb.append("<line x1=\"").append(x1).append("\" y1=\"").append(startPosXY).append("\" x2=\"").append(x1).append("\" y2=\"").append(y2).append("\" style=\"stroke:rgb(255,0,0);stroke-width:2\" />");
-
-        return sb.toString();
-    }
-
-    //For shed
-    private String createShed(double length, double width,double shedLength, double shedWidth) {
-
-        //Amount of planks needed for both lengths
-        double qtyShedLength = Math.ceil(shedLength / SHED_PLANK_WIDTH);
-        //Side with door
-        double qtyShedWidth = Math.ceil((shedWidth - DOOR_WIDTH) / SHED_PLANK_WIDTH);
-        //Side no door
-        double qtyBackWidth = Math.ceil(shedWidth / SHED_PLANK_WIDTH);
-
-        //Creating sides length.
-        //TOP
-        double xTOP = startPosXY + length - REM_WIDTH - SHED_PLANK_WIDTH;
-        for (int i = 0; i < qtyShedLength; i++) {
-            sb.append("<rect x=\"").append(xTOP).append("\" y=\"").append(startPosXY).append(REM_WIDTH).append("\" height=\"5\" width=\"").append(SHED_PLANK_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            xTOP -= SHED_PLANK_WIDTH;
         }
 
-        //BOT
-        double xBOT = startPosXY + length - REM_WIDTH - SHED_PLANK_WIDTH;
-        double y = (startPosXY + REM_WIDTH + shedWidth);
-        for (int i = 0; i < qtyShedLength; i++) {
-            sb.append("<rect x=\"").append(xBOT).append("\" y=\"").append(y).append("\" height=\"5\" width=\"").append(SHED_PLANK_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            xBOT -= SHED_PLANK_WIDTH;
-        }
-
-        //Right
-        double xRight = startPosXY + length - REM_WIDTH - 5;
-        double yRight = startPosXY + REM_WIDTH;
-        for (int i = 0; i < qtyBackWidth; i++) {
-            sb.append("<rect x=\"").append(xRight).append("\" y=\"").append(yRight).append("\" height=\"").append(SHED_PLANK_WIDTH).append("\" width=\"5\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            yRight += SHED_PLANK_WIDTH;
-        }
-
-        //Left
-        double yLeft = startPosXY + REM_WIDTH + 5;
-        double xLeft = startPosXY + length - REM_WIDTH - shedLength;
-        for (int i = 0; i < qtyShedWidth; i++) {
-            sb.append("<rect x=\"").append(xLeft).append("\" y=\"").append(yLeft).append("\" height=\"").append(SHED_PLANK_WIDTH).append("\" width=\"5\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            yLeft += SHED_PLANK_WIDTH;
-        }
-
-
-        return sb.toString();
-    }
-
-    //If flat roof is choosen
-    private String createLægterFlatRoof(double length, double width) {
-
-
-        double lægteLength = width + 25;
-
-        double firstLægte = startPosXY + (BATTENS_GAP_REM - REM_WIDTH);
-        double lastLægte = startPosXY + length - BATTENS_GAP_REM;
-        double y2 = startPosXY - 10;
-
-        sb.append("<rect x=\"").append(firstLægte).append("\" y=\"").append(y2).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-        sb.append("<rect x=\"").append(lastLægte).append("\" y=\"").append(y2).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        double qty = Math.ceil(length / 50);
-        length -= (BATTENS_GAP_REM * 2);
-        double delta = length / (qty + 1);
-        double lægtePos = delta + firstLægte;
-        for (int i = 0; i < qty; i++) {
-            System.out.println(qty);
-            sb.append("<rect x=\"").append(lægtePos).append("\" y=\"").append(y2).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            lægtePos += delta;
-        }
-
-
-        return sb.toString();
-    }
-
-    //If pointed roof is choosen
-    private String createLægterPointeRoof(double length, double width) {
-        double lægteLength = width / 2;
-        double firstLægte = startPosXY + (BATTENS_GAP_REM - REM_WIDTH);
-        double lastLægte = startPosXY + length - BATTENS_GAP_REM;
-        double y1 = startPosXY - 10;
-        double y2 = startPosXY + (width / 2) + 10;
-
-        double qty = Math.ceil(length / 50);
-        length -= (BATTENS_GAP_REM * 2);
-        double delta = length / (qty + 1);
-        double leftLægtePos = delta + firstLægte;
-        //Left side lægter
-        sb.append("<rect x=\"").append(firstLægte).append("\" y=\"").append(y1).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-        sb.append("<rect x=\"").append(lastLægte).append("\" y=\"").append(y1).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        for (int i = 0; i < qty; i++) {
-            sb.append("<rect x=\"").append(leftLægtePos).append("\" y=\"").append(y1).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            leftLægtePos += delta;
-        }
-
-
-        //Right side lægter
-        sb.append("<rect x=\"").append(firstLægte).append("\" y=\"").append(y2).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-        sb.append("<rect x=\"").append(lastLægte).append("\" y=\"").append(y2).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        double rightLægtePos = delta + firstLægte;
-        for (int i = 0; i < qty; i++) {
-            sb.append("<rect x=\"").append(rightLægtePos).append("\" y=\"").append(y2).append("\" height=\"").append(lægteLength).append("\" width=\"").append(BATTEN_WIDTH).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-            rightLægtePos = delta + rightLægtePos;
-        }
-
-        return sb.toString();
-    }
-
-    private String createSupportingLægter(double length, double width) {
-        //The supporting lapth
-        double remXPos = startPosXY + REM_WIDTH;
-        double lengthOfRem = length - (REM_WIDTH*2);
-
-        //Left
-        double y1 = startPosXY + (width/4);
-        sb.append("<rect x=\"").append(remXPos).append("\" y=\"").append(y1).append("\" height=\"").append(BATTEN_WIDTH).append("\" width=\"").append(lengthOfRem).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-
-        //Right
-        double width1 = width / 2;
-        double y2 = startPosXY + width1 + (width1 / 2);
-
-        sb.append("<rect x=\"").append(remXPos).append("\" y=\"").append(y2).append("\" height=\"").append(BATTEN_WIDTH).append("\" width=\"").append(lengthOfRem).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-        //Middle
-        double y3 = startPosXY + (width / 2) - REM_WIDTH;
-        double middleRemWidth = REM_WIDTH + 10;
-        sb.append("<rect x=\"").append(remXPos).append("\" y=\"").append(y3).append("\" height=\"").append(middleRemWidth).append("\" width=\"").append(lengthOfRem).append("\" style=\"stroke: #292929; fill:none; stroke-width: 1.5;\"/>");
-
-
-        return sb.toString();
-    }
-
-    //Test
-    private String createPointedRoof(double length, double width) {
-        int degree = 20;
-
-        double sinC = 180 - (2 * degree);
-
-        //Calculates the length of the hypotenusen
-        double hypo = (width * Math.sin(degree * (Math.PI/180))) / Math.sin(sinC * (Math.PI/180));
-
-        double lengthOfLægte = (width + hypo + hypo/2) / 0.5 * width;
-        double middleLægte = length;
-        double middleLægtePos = lengthOfLægte / 2;
-
-        sb.append("");
-
-
-        return sb.toString();
+        return svgText;
     }
 
 
+    private String vandretMal(){
+        String svgText;
+        double fixedWidth = width + 100;
+        double fixedLength = length + 100;
+
+        if(roof.equals("skrot")){
+            svgText = "<line x1=\"75\"  y1=\""+ (fixedWidth - 10) + "\" x2=\""+ (fixedLength - 25) + "\"   y2=\"" + (fixedWidth - 10) + "\"\n" +
+                    "          style=\"stroke: #000000;\n" +
+                    "\tmarker-start: url(#beginArrow);\n" +
+                    "\tmarker-end: url(#endArrow);\"/>\n" +
+                    "\n" +
+                    "    <text style=\"text-anchor: middle\" transform=\"translate("+ (fixedLength/2 - 15) + ","+ (fixedWidth - 20) + ") rotate(0)\">"+ (length) + " cm</text>";
 
 
+            svgText = svgText  + "<line x1=\"" + (fixedLength - 280) + "\"  y1=\"" + (fixedWidth - 50) + "\" x2=\"" + (fixedLength - 170) + "\"  y2=\"" + (fixedWidth - 50) + "\" style=\"stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);\"/>\n" +
+                    "        <text style=\"text-anchor: middle\" transform=\"translate(" + (fixedLength - 230) + "," + (fixedWidth - 65) + ") rotate(0)\">110cm</text>\n" +
+                    "\n" +
+                    "        <line x1=\"" + (fixedLength - 170) + "\"  y1=\"" + (fixedWidth - 50) + "\" x2=\"" + (fixedLength - 60) + "\"  y2=\"" + (fixedWidth - 50) + "\" style=\"stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);\"/>\n" +
+                    "        <text style=\"text-anchor: middle\" transform=\"translate(" + (fixedLength - 120) + "," + (fixedWidth - 65) + ") rotate(0)\">110cm</text>";
+
+            //Vandret spær 0,89m
+            int antalSpear = (int) Math.floor((length - (110 + 110 + 30))/ 89);
+
+            int rest = (int) ((length) - ( (110 + 110 + 30) + (antalSpear * 89)));
+            double startPosition = rest + 75;
+
+            for(double x = 0 ; x < (antalSpear) ; x++){
+
+                svgText = svgText + "<line x1=\"" + (startPosition + (x * 89)) + "\"  y1=\"" + (fixedWidth - 50) + "\" x2=\"" + (startPosition + (x * 89) + 89) + "\"  y2=\"" + (fixedWidth - 50) + "\" style=\"stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);\"/>\n" +
+                        "    <text style=\"text-anchor: middle\" transform=\"translate(" + (startPosition + (x * 89) + 50) + "," + (fixedWidth - 65) + ") rotate(0)\">89cm</text>";
+
+
+            }
+
+            if(rest > 0){
+                svgText = svgText + "<line x1=\"" + (75) + "\"  y1=\"" + (fixedWidth - 50) + "\" x2=\"" + (startPosition) + "\"  y2=\"" + (fixedWidth - 50) + "\" style=\"stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);\"/>\n" +
+                        "    <text style=\"text-anchor: middle\" transform=\"translate(" + (75 + rest/2) + "," + (fixedWidth - 65) + ") rotate(0)\">" + (rest) + "cm</text>";
+            }
+
+        }else {
+            svgText = "<line x1=\"75\"  y1=\""+ (fixedWidth - 30) + "\" x2=\"" + (fixedLength - 25) + "\"   y2=\"" + (fixedWidth - 30) + "\"\n" +
+                    "          style=\"stroke: #000000;\n" +
+                    "\tmarker-start: url(#beginArrow);\n" +
+                    "\tmarker-end: url(#endArrow);\"/>\n" +
+                    "\n" +
+                    "    <text style=\"text-anchor: middle\" transform=\"translate(" + ((fixedLength/2) + 25) + "," + (fixedWidth - 15) + ") rotate(0)\">" + (length) + " cm</text>";
+        }
+
+        return svgText;
+    }
+
+    private String carportHeader() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            svgText = "<svg version=\"1.1\"\n" +
+                    "         xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                    "         xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n" +
+                    "         x=\"75\"\n" +
+                    "         y=\"10\"\n" +
+                    "         width=\""  + (length) + "\"\n" +
+                    "         height=\"" + (width + 100) + "\"\n" +
+                    "         viewBox=\"0 0 "  + (length) + " " + (width + 100) + "\"\n" +
+                    "         preserveAspectRatio=\"xMinYMin\">";
+
+        } else {
+            svgText = "<svg version=\"1.1\"\n" +
+                    "         xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                    "         xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n" +
+                    "         x=\"75\"\n" +
+                    "         y=\"10\"\n" +
+                    "         width=\""  + (length) + "\"\n" +
+                    "         height=\"" + (width + 100) + "\"\n" +
+                    "         viewBox=\"0 0 "+ (length) + " " + (width + 100) + "\"\n" +
+                    "         preserveAspectRatio=\"xMinYMin\">";
+        }
+
+        return svgText;
+    }
+
+
+    private String carportSpaer() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            //Først de spær der er 1,10m
+            svgText = "<rect x=\"" + (length - 30) + "\" y=\"0\" height=\"" + (width) + "\" width=\"4.5\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 140) + "\" y=\"0\" height=\"" + (width) + "\" width=\"4.5\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 250) + "\" y=\"0\" height=\"" + (width) + "\" width=\"4.5\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+
+            //lodret spær 0,89m
+            int antalSpear = (int) Math.floor((length - (110 + 110 + 30))/ 89);
+
+            int rest = (int) ((length) - ( (110 + 110 + 30) + (antalSpear * 89)));
+            double startPosition = rest;
+
+            for(double x = 0 ; x < (antalSpear) ; x++){
+
+                svgText = svgText + "<rect x=\"" + (startPosition + (x * 89)) + "\" y=\"0\" height=\"" + (width) + "\" width=\"4.5\"\n" +
+                        "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            }
+
+            //Vandret midter spær
+            svgText = svgText + "<rect x=\"0\" y=\"" + (width/2 - 2) + "\" height=\"4\" width=\"" + (length) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+
+            //Udfyldning af midter spær
+            int antalVandretspear = (int) Math.floor((width/2) / 27);
+
+            for(double x = 0 ; x <= (antalVandretspear) ; x++){
+
+                svgText = svgText + "<rect x=\"0\" y=\"" + (0 + (x * 27)) + "\" height=\"4\" width=\"" + (length) + "\"\n" +
+                        "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            }
+
+            for(double x = 0 ; x <= (antalVandretspear) ; x++){
+
+                svgText = svgText + "<rect x=\"0\" y=\"" + ((width - 4) - (x * 27)) + "\" height=\"4\" width=\"" + (length) + "\"\n" +
+                        "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            }
+
+
+            svgText = svgText + "";
+
+        } else {
+            svgText = "";
+        }
+
+        return svgText;
+    }
+
+    private String carportSpaerMal() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+
+            svgText = "";
+
+        } else {
+            svgText = "";
+
+            //Runder NED til nærmeste hele
+            int antalSpear = (int) Math.floor((length - 10)/ 55);
+            int rest = (int) ((length - 10) - (antalSpear * 55));
+
+            if(rest > 0){
+                svgText = "<line x1=\"10\"  y1=\"" + (width + 20) + "\" x2=\"" + (rest + 10) + "\"  y2=\"" + (width + 20) + "\" style=\"stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);\"/>\n" +
+                        "        <text style=\"text-anchor: middle\" transform=\"translate("+ (rest/2 + 12) + ","+ (width + 40) + ") rotate(0)\">"+ (rest) + "cm</text>";
+
+            }
+
+            double startPosition = 10 + rest;
+
+            for(double x = 0 ; x < (antalSpear) ; x++){
+
+                svgText = svgText + "<line x1=\"" + (startPosition + (x * 55)) + "\"  y1=\"" + (width + 20) + "\" x2=\"" + (startPosition + (x * 55) + 55) + "\"  y2=\""  + (width + 20) + "\" style=\"stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);\"/>\n" +
+                        "        <text style=\"text-anchor: middle\" transform=\"translate(" + (startPosition + (x * 55) + 32) + ","  + (width + 40) + ") rotate(0)\">55cm</text>";
+
+            }
+
+        }
+
+        return svgText;
+    }
+
+
+    private String carportRammeogSider() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            svgText = "<rect x=\"0\" y=\"0\" height=\"" + (width) + "\" width=\"" + (length) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            svgText = svgText + "<rect x=\"30\" y=\"17\" height=\"4.5\" width=\""  + (length - 60) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"30\" y=\""  + (width - 20) + "\" height=\"4.5\" width=\""  + (length - 60) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+        } else {
+            svgText = "<rect x=\"0\" y=\"0\" height=\"" + (width) + "\" width=\"" + (length) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            svgText = svgText + "<rect x=\"0\" y=\"35\" height=\"4.5\" width=\""  + (length) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"0\" y=\""  + (width - 35) + "\" height=\"4.5\" width=\""  + (length) + "\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+        }
+
+        return svgText;
+    }
+
+
+    private String carportKryds() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            svgText = "<rect x=\"0\" y=\"" + (width/2) + "\" height=\"" + (width/2) + "\" width=\"4\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "        <rect x=\"0\" y=\"0\" height=\"" + (width/2) + "\" width=\"4\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 4) + "\" y=\"0\" height=\"" + (width/2) + "\" width=\"4\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "        <rect x=\"" + (length - 4) + "\" y=\"" + (width/2) + "\" height=\"" + (width/2) + "\" width=\"4\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+        } else {
+            svgText = "<line x1=\"60\" y1=\"35\" x2=\"" + (length - 240) + "\" y2=\"" + (width - 30) + "\"  style=\"stroke:#000000; stroke-dasharray: 10,10\"/>\n" +
+                    "\n" +
+                    "        <line x1=\"60\" y1=\"" + (width - 30) + "\" x2=\"" + (length - 240) + "\" y2=\"35\"  style=\"stroke:#000000; stroke-dasharray: 10,10\"/>";
+
+        }
+
+        return svgText;
+    }
+
+
+    private String carportBagForkant() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            svgText = "";
+
+        } else {
+            svgText = "<rect x=\"0\" y=\"0\" height=\"" + (width) + "\" width=\"4\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 4) + "\" y=\"0\" height=\"" + (width) + "\" width=\"4\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+        }
+
+        return svgText;
+    }
+
+
+    private String carportSpear() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            svgText = "";
+
+        } else {
+            svgText = "";
+
+            //Runder NED til nærmeste hele
+            int antalSpear = (int) Math.floor((length - 10)/ 55);
+            int rest = (int) ((length - 10) - (antalSpear * 55));
+
+            double startPosition;
+
+            if(rest > 0) {
+                startPosition = rest + 5;
+            } else {
+                startPosition = 60;
+            }
+
+            for(double x = 0 ; x < (antalSpear) ; x++){
+
+                svgText = svgText + "<rect x=\""+ (startPosition + (x * 55)) + "\" y=\"0\" height=\"" + (width) + "\" width=\"4.5\"\n" +
+                        "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            }
+        }
+
+        return svgText;
+    }
+
+
+    private String carportStolper() {
+        String svgText;
+
+        if (roof.equals("skrot")) {
+            svgText = "<rect x=\"80\" y=\"14\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 365) + "\" y=\"14\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 30) + "\" y=\"14\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            svgText = svgText + "<rect x=\"80\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 365) + "\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 30) + "\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+
+        } else {
+            svgText = "<rect x=\"" + (112) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 370) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 36) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            svgText = svgText + "<rect x=\"" + (112) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 370) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 36) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+        }
+
+        return svgText;
+    }
+
+
+    private String carporFooter() {
+        String svgText;
+
+        svgText = "</svg>";
+
+        return svgText;
+    }
+
+
+    private String skur(){
+        String svgText;
+
+        if(roof.equals("skrot")){
+            svgText = "<svg version=\"1.1\"\n" +
+                    "         xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                    "         xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n" +
+                    "         x=\"75\"\n" +
+                    "         y=\"10\"\n" +
+                    "         width=\"" + (length) + "\"\n" +
+                    "         height=\"" + (width) + "\"\n" +
+                    "         viewBox=\"0 0 " + (length) + " " + (width) + "\"\n" +
+                    "         preserveAspectRatio=\"xMinYMin\">";
+
+            //Stolper
+            svgText = svgText + "<rect x=\"" + (length - shedLength - 25) + "\" y=\"14\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "        \n" +
+                    "        <rect x=\"" + (length - shedLength - 25) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - 30) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            if(width == shedWidth + 40){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 25) + "\" y=\"" + (width - 22) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                        "              style=\"stroke:#000000; fill: #fff\"/>";
+            }
+
+            //Ramme om skur
+            if(width == shedWidth + 40){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 23) + "\" y=\"14\" height=\"" + (width - 28) + "\" width=\"" + (shedLength) + "\"\n" +
+                        "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
+            } else {
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 23) + "\" y=\"14\" height=\"" + (width/2 - 10) + "\" width=\"" + (shedLength) + "\"\n" +
+                        "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
+            }
+
+
+            svgText = svgText + "</svg>";
+
+        }else {
+            svgText = "<svg version=\"1.1\"\n" +
+                    "         xmlns=\"http://www.w3.org/2000/svg\"\n" +
+                    "         xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n" +
+                    "         x=\"75\"\n" +
+                    "         y=\"10\"\n" +
+                    "         width=\"" + (length) + "\"\n" +
+                    "         height=\"" + (width) + "\"\n" +
+                    "         viewBox=\"0 0 " + (length) + " " + (width) + "\"\n" +
+                    "         preserveAspectRatio=\"xMinYMin\">";
+
+
+            //Stolper
+            svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"32.5\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "        \n" +
+                    "        <rect x=\"" + (length - 35) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>\n" +
+                    "\n" +
+                    "        <rect x=\"" + (length - shedLength - 18) + "\" y=\"" + (width/2 - 5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                    "              style=\"stroke:#000000; fill: #fff\"/>";
+
+            if(width == shedWidth +  75){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"" + (width - 37.5) + "\" height=\"9.7\" width=\"9.7\"\n" +
+                        "              style=\"stroke:#000000; fill: #fff\"/>";
+            }
+
+            //Ramme om skur
+            if(width == shedWidth + 75){
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"32.5\" height=\"" + (width - 60) + "\" width=\"" + (shedLength - 7) + "\"\n" +
+                        "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
+            } else {
+                svgText = svgText + "<rect x=\"" + (length - shedLength - 18) + "\" y=\"32.5\" height=\"" + (width/2 - 25) + "\" width=\"" + (shedLength - 7) + "\"\n" +
+                        "              style=\"stroke:#000000; stroke-dasharray: 10,10;\" fill=\"none\"/>";
+            }
+
+            svgText = svgText + "</svg>";
+        }
+        return svgText;
+    }
+
+
+    private String footer(){
+        String svgText;
+
+        svgText = "</svg>";
+
+        return svgText;
+    }
 }

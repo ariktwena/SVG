@@ -91,10 +91,13 @@
 
 
 <div>
+<%--<div style="width: 800px">--%>
     <div>
+<%--    <div style="width: 1200px">--%>
         ${requestScope.svgSide}
     </div>
     <div>
+<%--    <div style="width: 1200px">--%>
         ${requestScope.svgTop}
     </div>
 </div>

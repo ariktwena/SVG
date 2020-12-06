@@ -60,7 +60,7 @@ public class SVGSide {
         if(roof.equals("skrot")){
             svgText = "<svg version=\"1.1\"\n" +
                     "     xmlns=\"http://www.w3.org/2000/svg\"\n" +
-                    "     height=\"" + headerHeight + "\"  width=\""+ headerLength + "\" viewBox=\"0 0 "+ headerLength + " "+ headerHeight + "\"\n" +
+                    "     height=\"100%\"  width=\"100%\" viewBox=\"0 0 "+ headerLength + " "+ headerHeight + "\"\n" +
                     "     preserveAspectRatio=\"xMinYMin\">\n" +
                     "\n" +
                     "    <!--    Hvid ramme-->\n" +
@@ -93,7 +93,7 @@ public class SVGSide {
         } else {
             svgText = "<svg version=\"1.1\"\n" +
                     "     xmlns=\"http://www.w3.org/2000/svg\"\n" +
-                    "     height=\"" + headerHeight + "\"  width=\""+ headerLength + "\" viewBox=\"0 0 "+ headerLength + " "+ headerHeight + "\"\n" +
+                    "     height=\"100%\"  width=\"100%\" viewBox=\"0 0 "+ headerLength + " "+ headerHeight + "\"\n" +
                     "     preserveAspectRatio=\"xMinYMin\">\n" +
                     "\n" +
                     "    <!--    Hvid ramme (heøjde + 100 og bredde +150)-->\n" +
