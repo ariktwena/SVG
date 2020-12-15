@@ -1,0 +1,292 @@
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  height="460"  width="830" viewBox="0 0 830 460"
+  preserveAspectRatio="xMinYMin">
+
+  <!--    Hvid ramme-->
+  <rect x="0" y="0" height="460" width="830"
+    style="stroke:#000000; fill: #fff"/>
+
+
+
+  <defs>
+    <marker
+      id="beginArrow"
+      markerWidth="12"
+      markerHeight="12"
+      refX="0"
+      refY="6"
+      orient="auto">
+      <path d="M0,6 L12,0 L12,12 L0,6" style="fill: #000000;" />
+    </marker>
+    <marker
+      id="endArrow"
+      markerWidth="12"
+      markerHeight="12"
+      refX="12"
+      refY="6"
+      orient="auto">
+      <path d="M0,0 L12,6 L0,12 L0,0 " style="fill: #000000;" />
+    </marker>
+  </defs>
+
+  <!--    Lodret måling-->
+  <line x1="20"  y1="10" x2="20"   y2="370"
+    style="stroke: #000000;
+	marker-start: url(#beginArrow);
+	marker-end: url(#endArrow);"/>
+
+  <text style="text-anchor: middle" transform="translate(14,185) rotate(-90)">360 cm</text>
+
+
+  <line x1="45"  y1="30" x2="45"   y2="340"
+    style="stroke: #000000;
+	marker-start: url(#beginArrow);
+	marker-end: url(#endArrow);"/>
+
+  <text style="text-anchor: middle" transform="translate(40,185) rotate(-90)">320 cm</text>
+
+
+  <line x1="65"  y1="325" x2="65"   y2="370"
+    style="stroke: #000000;
+	marker-start: url(#beginArrow);
+	marker-end: url(#endArrow);"/>
+
+  <text style="text-anchor: middle" transform="translate(70,300) rotate(-90)">0,45 cm</text>
+
+
+  <!--    Vandret måling-->
+  <line x1="75"  y1="450" x2="805"   y2="450"
+    style="stroke: #000000;
+	marker-start: url(#beginArrow);
+	marker-end: url(#endArrow);"/>
+
+  <text style="text-anchor: middle" transform="translate(435,440) rotate(0)">730 cm</text>
+
+
+  <line x1="105"  y1="410" x2="194"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(155,395) rotate(0)">0,89</text>
+
+  <line x1="194"  y1="410" x2="283"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(244,395) rotate(0)">0,89</text>
+
+  <line x1="283"  y1="410" x2="372"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(333,395) rotate(0)">0,89</text>
+
+  <line x1="372"  y1="410" x2="461"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(422,395) rotate(0)">0,89</text>
+
+  <line x1="461"  y1="410" x2="550"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(511,395) rotate(0)">0,89</text>
+
+  <line x1="550"  y1="410" x2="660"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(600,395) rotate(0)">1,10</text>
+
+  <line x1="660"  y1="410" x2="770"  y2="410" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(710,395) rotate(0)">1,10</text>
+
+
+  <!--    Carport-->
+  <svg version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="75"
+    y="10"
+    width="730"
+    height="460"
+    viewBox="0 0 730 460"
+    preserveAspectRatio="xMinYMin">
+
+    <!--    Carport hvid ramme-->
+    <rect x="0" y="0" height="360" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <!--    Siderne  (Starter 35 ind og slutter 35 før)-->
+    <rect x="30" y="17" height="4.5" width="670"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="30" y="340" height="4.5" width="670"
+      style="stroke:#000000; fill: #fff"/>
+
+
+    <!--    Front og bagkant-->
+    <rect x="0" y="180" height="180" width="4"
+      style="stroke:#000000; fill: #fff"/>
+    <rect x="0" y="0" height="180" width="4"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="730" y="0" height="180" width="4"
+      style="stroke:#000000; fill: #fff"/>
+    <rect x="730" y="180" height="180" width="4"
+      style="stroke:#000000; fill: #fff"/>
+
+
+
+    <!--    Spær (Stiger 110 mellem)-->
+    <rect x="700" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="590" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="480" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <!--    Spær (Stiger 89 mellem)-->
+    <rect x="391" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="303" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="214" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="115" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="26" y="0" height="360" width="4.5"
+      style="stroke:#000000; fill: #fff"/>
+
+
+    <!--    Spær vandret(360 / 2 -2)-->
+    <rect x="0" y="178" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <!--    Spær vandret(180 stiger 27) først start opppe, derefter nede-->
+
+    <rect x="0" y="0" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="27" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="54" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="81" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="108" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="135" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="162" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <!--    Spær vandret(180 fald 27 + længde) først start opppe, derefter nede-->
+    <rect x="0" y="356" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="329" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="302" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="275" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="248" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="221" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="0" y="194" height="4" width="730"
+      style="stroke:#000000; fill: #fff"/>
+
+
+
+
+    <!--    Stolper øverst (Starter og slutter 18 før/efter) og plus 4 længde -->
+    <rect x="80" y="14" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="365" y="14" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="700" y="14" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+
+
+    <!--    Stolper neders (Starter og slutter 32.5 før/efter) og plus 4 længde -->
+    <rect x="80" y="338" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="365" y="338" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="700" y="338" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+  </svg>
+
+  <!--    Skur-->
+  <svg version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="75"
+    y="10"
+    width="730"
+    height="360"
+    viewBox="0 0 730 360"
+    preserveAspectRatio="xMinYMin">
+
+    <!--    Skur sider (minus 25 i bunden => længde 600 - 60 = 540)-->
+    <rect x="480" y="14" height="330" width="220"
+      style="stroke:#000000; stroke-dasharray: 10,10;" fill="none"/>
+
+    <!--    Skur sider (minus 25 i bunden) 3/4 størrelse-->
+    <rect x="480" y="14" height="240" width="220"
+      style="stroke:#000000; stroke-dasharray: 10,10;" fill="none"/>
+
+    <!--    Skur sider (minus 25 i bunden) 1/2 størrelse-->
+    <rect x="480" y="14" height="165" width="220"
+      style="stroke:#000000; stroke-dasharray: 10,10;" fill="none"/>
+
+    <!--    Skur sider (minus 25 i bunden) 1/4 størrelse-->
+    <rect x="480" y="14" height="85" width="220"
+      style="stroke:#000000; stroke-dasharray: 10,10;" fill="none"/>
+
+
+    <!--        Stolper skur-->
+
+    <rect x="480" y="14" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="480" y="175" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="700" y="175" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+
+    <rect x="480" y="338" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+
+
+    <rect x="480" y="95" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="700" y="95" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="480" y="250" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="700" y="250" height="9.7" width="9.7"
+      style="stroke:#000000; fill: #fff"/>
+
+  </svg>
+
+
+
+
+</svg>
+

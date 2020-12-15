@@ -1,0 +1,324 @@
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  height="405"  width="880" viewBox="0 0 880 405"
+  preserveAspectRatio="xMinYMin">
+
+  <!--    Hvid ramme-->
+  <rect x="0" y="0" height="405" width="880"
+    style="stroke:#000000; fill: #fff"/>
+
+
+  <defs>
+    <marker
+      id="beginArrow"
+      markerWidth="12"
+      markerHeight="12"
+      refX="0"
+      refY="6"
+      orient="auto">
+      <path d="M0,6 L12,0 L12,12 L0,6" style="fill: #000000;" />
+    </marker>
+    <marker
+      id="endArrow"
+      markerWidth="12"
+      markerHeight="12"
+      refX="12"
+      refY="6"
+      orient="auto">
+      <path d="M0,0 L12,6 L0,12 L0,0 " style="fill: #000000;" />
+    </marker>
+  </defs>
+
+  <!--    Lodret måling-->
+  <line x1="20"  y1="10" x2="20"   y2="315"
+    style="stroke: #000000;
+	marker-start: url(#beginArrow);
+	marker-end: url(#endArrow);"/>
+
+  <text style="text-anchor: middle" transform="translate(15,135) rotate(-90)">305 cm</text>
+
+
+  <!--    Lodret måling-->
+  <line x1="50"  y1="105" x2="50"   y2="315"
+    style="stroke: #000000;
+	marker-start: url(#beginArrow);
+	marker-end: url(#endArrow);"/>
+
+  <text style="text-anchor: middle" transform="translate(45,210) rotate(-90)">210 cm</text>
+
+
+  <!--    Vandret spær (stiger 55)-->
+  <line x1="75"  y1="370" x2="165"  y2="370" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(115,360) rotate(0)">80 cm</text>
+
+  <line x1="165"  y1="370" x2="440"  y2="370" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(300,360) rotate(0)">275 cm</text>
+
+  <line x1="440"  y1="370" x2="560"  y2="370" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(500,360) rotate(0)">120 cm</text>
+
+  <line x1="560"  y1="370" x2="785"  y2="370" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(680,360) rotate(0)">225 cm</text>
+
+  <line x1="785"  y1="370" x2="815"  y2="370" style="stroke: #000000; marker-start: url(#beginArrow);marker-end: url(#endArrow);"/>
+  <text style="text-anchor: middle" transform="translate(800,360) rotate(0)">30 cm</text>
+
+
+
+  <!--    Skur-->
+  <svg version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="75"
+    y="10"
+    width="730"
+    height="305"
+    viewBox="0 0 730 305"
+    preserveAspectRatio="xMinYMin">
+
+    <!--        Stiger med 10-->
+    <rect x="485" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="495" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="505" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="515" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="525" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="535" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="545" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="555" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="565" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="575" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="585" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="595" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="605" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="615" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="625" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="635" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="645" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="655" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="665" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="675" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="685" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="695" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="705" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+    <rect x="715" y="95" height="210" width="10"
+      style="stroke:#000000; " fill="none"/>
+
+
+  </svg>
+
+  <!--    Carport-->
+  <svg version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="75"
+    y="10"
+    width="730"
+    height="305"
+    viewBox="0 0 730 305"
+    preserveAspectRatio="xMinYMin">
+
+
+    <!--    Carport Stolpe-->
+    <rect x="80" y="95" height="210" width="10"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="365" y="95" height="210" width="10"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="690" y="95" height="210" width="10"
+      style="stroke:#000000; fill: #fff"/>
+
+    <rect x="5" y="15" height="65" width="5"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+
+    <!-- stigning med 10 -->
+    <rect x="10" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="20" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="30" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="40" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="50" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="60" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="70" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="80" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="90" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="100" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="110" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="120" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="130" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="140" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="150" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="160" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="170" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="180" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="190" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="200" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="210" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="220" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="230" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="240" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="250" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="260" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="270" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="280" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="290" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="300" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="310" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="320" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="330" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="340" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="350" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="360" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="370" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="380" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="390" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="400" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="410" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="420" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="430" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="440" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="450" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="460" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="470" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="480" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="490" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="500" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="510" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="520" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="530" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="540" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="550" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="560" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="570" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="580" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="590" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="600" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="610" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="620" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="630" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="640" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="650" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="660" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="670" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="680" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="690" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="700" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="710" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="720" y="15" height="65" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+
+    <!--    Carport tag-->
+    <rect x="0" y="5" height="10" width="730"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+
+    <rect x="0" y="80" height="15" width="730"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="0" y="85" height="10" width="730"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="35" y="95" height="10" width="665"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+
+    <rect x="0" y="0" height="70" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+    <rect x="720" y="0" height="70" width="10"
+      style="stroke:#000000; fill: #fff" transform="rotate(0)"/>
+
+
+
+  </svg>
+
+</svg>
+
